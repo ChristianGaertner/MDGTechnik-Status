@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <style>
+        @import url(//fonts.googleapis.com/css?family=Lato:300,400,700);
+
+        body {
+            margin:0;
+            font-family:'Lato', sans-serif;
+            text-align:center;
+            color: #999;
+        }
+
+        .welcome {
+            margin-top: 200px;
+        }
+
+        a, a:visited {
+            color:#FF5949;
+            text-decoration:none;
+        }
+
+        a:hover {
+            text-decoration:underline;
+        }
+
+        ul li {
+            display:inline;
+            margin:0 1.2em;
+        }
+
+        p {
+            margin:2em 0;
+            color:#555;
+        }
+
+        .online {
+            color: #45A82D;
+        }
+
+        .offline {
+            color: #A82D2D;
+        }
+
+        .error {
+            color: #DEB331;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="welcome">
+        <h1><%= title %>.</h1>
+        <p>
+            Status:
+            <% switch(status) { 
+                case 0:
+            %>
+            <span class="error">Tracking Paused</span>
+            <%      break;
+                case 1:
+            %>
+            <span class="error">Not check yet</span>
+            <%      break;
+                case 2:
+            %>
+            <span class="online">Online</span>
+            <%      break;
+                case 8:
+            %>
+            <span class="offline">Seems down</span>
+            <%      break;
+                case 9:
+            %>
+            <span class="offline">Down!</span>
+            <%      break;
+                default:
+            %>
+            <span class="error"><br>
+                Something went wrong getting the status.<br>
+                Maybe go ahead and check it for your self. But we are doing our best to getting it right asap.
+
+            </span>
+            <% } %>
+            
+            <br />    
+        
+            UpTime: <%= uptime %>%
+            
+        </p>
+    </div>
+</body>
+</html>
