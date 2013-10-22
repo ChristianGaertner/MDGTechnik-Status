@@ -20,7 +20,18 @@ exports.index = function(req, res){
 
         response.on('end', function() {
 
-            var info = JSON.parse(str).monitors.monitor[0];
+            var info;
+
+            try {
+                 info = JSON.parse(str).monitors.monitor[0];    
+            } catch (e) {
+                console.log(e);
+                info = {
+                    status: -1,
+                    alltimeuptimeratio: 'Unknow'
+                }
+            }
+            
 
             res.render('index', {
                 title: 'MDG Technik Status',
