@@ -19,10 +19,13 @@ exports.index = function(req, res){
         });
 
         response.on('end', function() {
+
+            var info = JSON.parse(str).monitors.monitor[0];
+
             res.render('index', {
                 title: 'MDG Technik Status',
-                status: 2,
-                uptime: str
+                status: parseInt(info.status),
+                uptime: info.alltimeuptimeratio
             });
         });
 
